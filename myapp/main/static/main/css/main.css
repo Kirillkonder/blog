@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.header {
+    background-color: #1A1A1A; /* Тёмный цвет фона шапки */
+    color: white;
+    padding: 20px 0;
+    transition: background-color 0.3s; /* Плавный переход цвета фона */
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px; /* Максимальная ширина контейнера */
+    margin: 0 auto; /* Центрирование контейнера */
+    padding: 0 20px; /* Отступы по бокам */
+}
+
+.logo h1 {
+    font-size: 24px; /* Размер шрифта логотипа */
+}
+
+.nav-list {
+    list-style-type: none; /* Убираем маркеры у списка */
+    display: flex; /* Горизонтальное расположение элементов */
+}
+
+.nav-list li {
+    margin-left: 20px; /* Отступ между пунктами меню */
+}
+
+.nav-list a {
+    color: #E0E0E0; /* Светлый цвет ссылок */
+    text-decoration: none; /* Убираем подчеркивание */
+    font-size: 16px; /* Размер шрифта ссылок */
+    position: relative; /* Для анимации */
+    transition: color 0.3s; /* Плавный переход цвета */
+}
+
+.nav-list a::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: #E0E0E0; /* Цвет линии под ссылкой */
+    transform: scaleX(0); /* Начальное состояние линии */
+    transition: transform 0.3s ease; /* Плавный переход для линии */
+}
+
+.nav-list a:hover {
+    color: #FFFFFF; /* Цвет ссылки при наведении */
+}
+
+.nav-list a:hover::after {
+    transform: scaleX(1); /* Анимация линии при наведении */
+}
+
+.auth .btn {
+    background-color: #3A3A3A; /* Тёмный цвет кнопки */
+    color: #E0E0E0; /* Светлый цвет текста кнопки */
+    padding: 10px 20px; /* Отступы внутри кнопки */
+    border-radius: 5px; /* Закругление углов кнопки */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: background-color 0.3s, color 0.3s; /* Плавный переход для фона и цвета текста кнопки */
+}
+
+.auth .btn:hover {
+    background-color: #E0E0E0; /* Светлый цвет кнопки при наведении */
+    color: #1A1A1A; /* Тёмный цвет текста кнопки при наведении */
+}

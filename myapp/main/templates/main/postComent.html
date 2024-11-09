@@ -1,0 +1,94 @@
+{% load static %}
+
+<!DOCTYPE>
+<html >
+<head>
+	<title></title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
+
+	<link rel="stylesheet" href="{% static 'main/css/post.css' %}">
+	
+
+</head>
+
+<body>
+	
+	
+<div class="shell">
+	<div class="border">
+
+		
+		<div id="main-container">
+			<div id="content-area" class="left-section">
+				<div class="project-item">
+					<h3>{{post.title}}</h3>
+					<div class="image-wrapper">
+						<a href="#"><img src="{{ post.img.url }}" width="50%" /></a>
+					</div>
+					<div class="project-details">
+						<div class="text-content left">
+							<p>{{post.description}}</p>
+							<p>Автор: {{post.author}} </p>
+						</div>
+						<div class="clear-fix">&nbsp;</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clear-fix">&nbsp;</div>
+		</div>
+			<div>
+				<br>
+				<p>Понравилось: {{ post.likes_set.all.count }}</p>
+				<br>
+				<a href="{% url 'add_likes' post.id %}">Нравится</a>
+				<a href="{% url 'del_likes' post.id %}"> Не нравится</a>
+			</div>
+		</div>
+		
+
+	</div>
+	
+	
+	
+	<div class="form-comment">
+		<h3 class="form-comment__title">Оставить комментарий</h3>
+		<div class="form-comment__container">
+			<form action="{% url 'add_comments' post.id %}" method="post" class="form-comment__form">
+				{% csrf_token %}
+				<div class="form-comment__field">
+					<label class="form-comment__label">Ваш комментарий</label>
+					<textarea name="text_comments" class="form-comment__textarea"></textarea>
+				</div>
+				
+				<div class="form-comment__field">
+					<label class="form-comment__label">Ваше имя *</label>
+					<input type="text" name="name" class="form-comment__input">
+				</div>
+	
+				<div class="form-comment__field">
+					<label class="form-comment__label">Ваш email *</label>
+					<input type="email" name="email" class="form-comment__input">
+				</div>
+				
+				<div class="form-comment__submit">
+					<input type="submit" class="form-comment__button">
+				</div>
+			</form>
+		</div>
+	</div>
+	<div class="comments-container">
+		{% for comment in post.comments_set.all %}
+			<div class="item">
+				<div class="text left">
+					<p class="author">Автор: <strong class="author-name">{{ comment.name }}</strong></p>
+					<p class="comment-text">Комментарий: <span class="comment-content">{{ comment.text_comments }}</span></p>
+				</div>
+				<div class="cl">&nbsp;</div>
+			</div>
+		{% endfor %}
+		
+</div>
+</body>
+</html>
